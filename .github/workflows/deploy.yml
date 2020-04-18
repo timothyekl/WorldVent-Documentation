@@ -23,7 +23,9 @@ jobs:
     - name: Copy files to host
       run: |
         ssh-keyscan worldvent.timekl.com 2>/dev/null >> known_hosts
-        echo "$SSH_DEPLOY_KEY" > id_rsa
+        touch id_rsa
+        chmod 600 id_rsa
+        echo "$SSH_DEPLOY_KEY" >> id_rsa
         rsync \
         -e "ssh -o UserKnownHostsFile=known_hosts -i id_rsa" \
         --verbose --recursive --delete \
