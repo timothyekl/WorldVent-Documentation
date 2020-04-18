@@ -25,7 +25,7 @@ jobs:
         ssh-keyscan worldvent.timekl.com 2>/dev/null >> known_hosts
         echo "$SSH_DEPLOY_KEY" > id_rsa
         rsync \
-        -e "ssh -o UserKnownHostsFile=known_hosts -i id_rsa"
+        -e "ssh -o UserKnownHostsFile=known_hosts -i id_rsa" \
         --verbose --recursive --delete \
         --exclude .git --exclude .htaccess \
         $GITHUB_WORKSPACE/ dh_62nzey@worldvent.timekl.com:worldvent.timekl.com/
