@@ -21,6 +21,8 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: Copy files to host
+      env:
+        DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
       run: |
         ssh-keyscan worldvent.timekl.com 2>/dev/null >> known_hosts
         touch id_rsa
