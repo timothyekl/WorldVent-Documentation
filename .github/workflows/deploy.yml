@@ -28,7 +28,6 @@ jobs:
         touch id_rsa
         chmod 600 id_rsa
         echo "$DEPLOY_SSH_KEY" >> id_rsa
-        head -n2 id_rsa
         rsync \
         -e "ssh -o UserKnownHostsFile=known_hosts -i id_rsa" \
         --verbose --recursive --delete \
